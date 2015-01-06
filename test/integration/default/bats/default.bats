@@ -15,7 +15,17 @@
 	[ "$status" -eq 1 ]
 }
 
+@test "port 1001/tcp was removed from permanent config" {
+	run firewall-cmd --permanent --query-port=1001/tcp
+	[ "$status" -eq 1 ]
+}
+
 @test "port 1002/tcp was not removed from runtime config" {
 	run firewall-cmd --query-port=1002/tcp
+	[ "$status" -eq 0 ]
+}
+
+@test "port 1002/tcp was not removed from permanent config" {
+	run firewall-cmd --permanent --query-port=1002/tcp
 	[ "$status" -eq 0 ]
 }
