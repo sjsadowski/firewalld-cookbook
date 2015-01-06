@@ -66,7 +66,7 @@ cookbook 'firewalld', path: 'path/to/cookbook'
 ```
 ```ruby
 # metadata.rb
-depends 'hostsfile'
+depends 'firewalld'
 ```
 
 Contributing
