@@ -1,8 +1,7 @@
 name             'firewalld'
 maintainer       'Jeff Hutchison'
 maintainer_email 'jeff@jeffhutchison.com'
-license          'MIT'
+license          'Apache v2.0'
 description      'Installs/Configures firewalld'
-long_description 'Installs/Configures firewalld'
+long_description 'Provided a default recipe to activate and a LWRP to add ports.'
 version          '0.1.0'
-
