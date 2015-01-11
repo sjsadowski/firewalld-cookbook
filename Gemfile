@@ -9,4 +9,5 @@ end
 group :test do
   gem 'rake'
   gem 'foodcritic'
+  gem 'chefspec'
 end

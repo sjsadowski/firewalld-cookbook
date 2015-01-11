@@ -1,5 +1,7 @@
 firewalld LWRP
 ==============
+[![Build Status](https://travis-ci.org/jhh/firewalld-cookbook.svg?branch=master)](https://travis-ci.org/jhh/firewalld-cookbook)
+[![Code Climate](https://codeclimate.com/github/jhh/firewalld-cookbook/badges/gpa.svg)](https://codeclimate.com/github/jhh/firewalld-cookbook)
 
 `firewalld` provides a LWRP for adding and removing ports to your firewall.
 
