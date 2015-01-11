@@ -16,3 +16,8 @@ gem 'berkshelf'
 
 gem 'test-kitchen'
 gem 'kitchen-vagrant'
+
+group :test do
+  gem 'rake'
+  gem 'foodcritic'
+end
