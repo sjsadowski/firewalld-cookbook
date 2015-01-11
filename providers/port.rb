@@ -5,7 +5,7 @@
 # Copyright:: 2015, Jeff Hutchison
 
 action :add do
-  e = execute 'add open port to zone' do
+  e = execute "add port #{new_resource.port} to zone" do
     not_if "firewall-cmd --permanent #{zone} --query-port=#{new_resource.port}"
     command(<<-EOC)
       firewall-cmd #{zone} --add-port=#{new_resource.port}
@@ -16,7 +16,7 @@ action :add do
 end
 
 action :remove do
-  e = execute 'remove open port from zone' do
+  e = execute "remove port #{new_resource.port} from zone" do
     only_if "firewall-cmd --permanent #{zone} --query-port=#{new_resource.port}"
     command(<<-EOC)
       firewall-cmd #{zone} --remove-port=#{new_resource.port}

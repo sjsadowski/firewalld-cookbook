@@ -18,3 +18,19 @@ describe 'firewalld::default' do
   end
 
 end
+
+describe 'fixture::default' do
+  let(:chef_run) do
+    ChefSpec::SoloRunner.new.converge(described_recipe)
+  end
+
+  it "adds port 993/tcp" do
+    expect(chef_run).to add_firewalld_port("993/tcp")
+  end
+
+  it "removes port 1001/tcp" do
+    expect(chef_run).to remove_firewalld_port("1001/tcp")
+  end
+
+
+end
