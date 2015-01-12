@@ -64,7 +64,7 @@ Usage
 If you're using [Berkshelf](http://berkshelf.com/), just add `firewalld` to your `Berksfile`:
 
 ```ruby
-cookbook 'firewalld', path: 'path/to/cookbook'
+cookbook 'firewalld', git: 'https://github.com/jhh/firewalld-cookbook.git'
 ```
 ```ruby
 # metadata.rb
