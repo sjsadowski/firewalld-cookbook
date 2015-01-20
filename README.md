@@ -145,6 +145,7 @@ Contributing
 License & Authors
 -----------------
 - Author:: Jeff Hutchison <jeff@jeffhutchison.com>
+- Author:: Manuel Toledo   <mtoledo@adobe.com>
 
 ```text
 Copyright 2015, Jeff Hutchison
