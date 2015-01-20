@@ -19,9 +19,9 @@ attribute :family, :kind_of => String, :default => "ipv4"
 attribute :zone, :kind_of => String
 attribute :source_address, :kind_of => [String, NilClass]
 attribute :destination_address, :kind_of => [String, NilClass]
-attribute :port_number, :kind_of => [Integer, NilClass]
+attribute :port_number, :kind_of => [String, NilClass]
 attribute :port_protocol, :kind_of => [String, NilClass], :default => "tcp"
 attribute :log_prefix, :kind_of => [String, NilClass]
 attribute :log_level, :kind_of => [String, NilClass]
-attribute :limit_value, :kind_of => [String, NilClass]
+attribute :limit_value, :kind_of => [String, NilClass], :default => "1/m"
 attribute :firewall_action, :kind_of => [String, NilClass]
