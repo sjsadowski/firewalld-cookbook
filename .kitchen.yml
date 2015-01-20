@@ -13,3 +13,8 @@ suites:
     run_list:
       - "recipe[fixture::default]"
     attributes:
+
+  - name: rich_rule
+    run_list:
+      - "recipe[fixture::rich_rule]"
+    attributes:
