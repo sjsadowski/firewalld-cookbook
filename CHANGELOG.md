@@ -4,8 +4,6 @@
 
 ### New
 
-* Version bump in metadata. [Manny Toledo]
-
 * Add Rich Rule LWRP documentation to README. [Manny Toledo]
 
 * ChefSpec test added for Rich Rule LWRP. [Manny Toledo]
