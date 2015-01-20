@@ -6,4 +6,12 @@ if defined?(ChefSpec)
   def remove_firewalld_port(port)
     ChefSpec::Matchers::ResourceMatcher.new(:firewalld_port, :remove, port)
   end
+
+  def add_firewalld_rich_rule(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_rich_rule, :add, name)
+  end
+
+  def remove_firewalld_rich_rule(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_rich_rule, :remove, name)
+  end
 end
