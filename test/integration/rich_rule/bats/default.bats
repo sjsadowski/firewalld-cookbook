@@ -1,8 +1,8 @@
 #!/usr/bin/env bats
 
-rule1='rule family="ipv4" source address="192.168.100.0/22" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
-rule2='rule family="ipv4" source address="192.168.200.0/22" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
-rule3='rule family="ipv4" source address="192.168.254.0/22" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
+rule1='rule family="ipv4" source address="192.168.100.0/24" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
+rule2='rule family="ipv4" source address="192.168.200.0/24" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
+rule3='rule family="ipv4" source address="192.168.254.0/24" service name="ssh" log prefix="ssh" level="info" limit value="1/m" accept'
 
 @test "rule 1 was added to permanent config" {
         run bash -c "firewall-cmd --permanent --query-rich-rule='${rule1}'"
