@@ -1,6 +1,6 @@
 # Changelog
 
-## %%version%% (unreleased)
+## version (unreleased)
 
 ### New
 
@@ -22,7 +22,7 @@
 
 * Add missing defaults in resource file and clean up comment. [Manny Toledo]
 
-## %%0.2.1%%
+## 0.2.1
 
 ### New
 
