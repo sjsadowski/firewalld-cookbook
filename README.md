@@ -124,12 +124,13 @@ More can be read here: [Complex Firewall Rules with Rich Language](https://acces
 
 Usage
 -----
-If you're using [Berkshelf](http://berkshelf.com/), just add `firewalld` to your `Berksfile`:
+If you're using [Berkshelf](http://berkshelf.com/), just add `firewalld` to your
+`Berksfile` and `metadata.rb`:
 
 ```ruby
-cookbook 'firewalld', git: 'https://github.com/jhh/firewalld-cookbook.git'
-```
-```ruby
+# Berksfile
+cookbook 'firewalld'
+
 # metadata.rb
 depends 'firewalld'
 ```
