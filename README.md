@@ -14,7 +14,7 @@ This `firewalld` cookbook provides three resources for adding and removing  serv
 
 ## service
 
-The `firewalld_service` resource will add the service for a zone to the current and permanent configurations. The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewalld-cmd --get-services`. If zone is omitted, default zone will be used.
+The `firewalld_service` resource will add the service for a zone to the current and permanent configurations. The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewall-cmd --get-services`. If zone is omitted, default zone will be used.
 
 ### Actions
 
@@ -155,7 +155,7 @@ The attributes for `rich_rule` map  directly to the `firewall-cmd (1)` command-l
 
 <tr>
 <td>name</td>
-<td>(name attribute) The name of the resource. This is not passed to `firewall-cmd`.</td>
+<td>(name attribute) The name of the resource. This is not passed to <code>firewall-cmd</code>.</td>
 <td>ssh_add</td>
 <td></td>
 </tr>
@@ -190,21 +190,21 @@ The attributes for `rich_rule` map  directly to the `firewall-cmd (1)` command-l
 
 <tr>
 <td>service_name</td>
-<td>The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewalld-cmd --get-services`.</td>
+<td>The service name is one of the <code>firewalld</code> provided services. To get a list of the supported services, use <code>firewall-cmd --get-services</code>.</td>
 <td>ssh</td>
 <td></td>
 </tr>
 
 <tr>
 <td>port_number</td>
-<td>Can be a single integer or a port range, for example '5060-5062'. The protocol can be specified. Requires that `port_protocol` attribute be specified also.</td>
+<td>Can be a single integer or a port range, for example '5060-5062'. The protocol can be specified. Requires that <code>port_protocol</code> attribute be specified also.</td>
 <td>5060</td>
 <td></td>
 </tr>
 
 <tr>
 <td>port_protocol</td>
-<td>The protocol for the specified port, can be 'tcp' or 'udp'. Requires that `port_number` attribute be specified also.</td>
+<td>The protocol for the specified port, can be 'tcp' or 'udp'. Requires that <code>port_number</code> attribute be specified also.</td>
 <td>tcp</td>
 <td></td>
 </tr>
@@ -241,7 +241,7 @@ The attributes for `rich_rule` map  directly to the `firewall-cmd (1)` command-l
 </table>
 
 
-### `add`
+### `:add`
 
 ```ruby
 # This opens the ssh service to ip `192.168.100.5` and logs at a rate of
