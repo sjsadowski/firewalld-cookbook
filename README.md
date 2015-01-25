@@ -1,36 +1,108 @@
 firewalld LWRP
 ==============
-[![Build Status](https://travis-ci.org/jhh/firewalld-cookbook.svg?branch=master)](https://travis-ci.org/jhh/firewalld-cookbook)
-[![Code Climate](https://codeclimate.com/github/jhh/firewalld-cookbook/badges/gpa.svg)](https://codeclimate.com/github/jhh/firewalld-cookbook)
+[![Build Status](https://travis-ci.org/jhh/firewalld-cookbook.svg?branch=master)][travis]
+[![Cookbook Version](http://img.shields.io/cookbook/v/firewalld.svg)][cookbook]
 
-`firewalld` provides a LWRP for adding and removing ports and rules to your firewall.
+[travis]: https://travis-ci.org/jhh/firewalld-cookbook
+[cookbook]: https://supermarket.chef.io/cookbooks/firewalld
 
-Attributes
-----------
+[Firewalld](https://fedoraproject.org/wiki/FirewallD) is the userland interface to dynamically managing a Linux firewall, introduced in Fedora 15 and Centos/RHEL 7.
+
+# Resource Overview
+
+This `firewalld` cookbook provides three resources for adding and removing  services, ports, and rules.
+
+## service
+
+The `firewalld_service` resource will add the service for a zone to the current and permanent configurations. The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewalld-cmd --get-services`. If zone is omitted, default zone will be used.
+
+### Actions
+
+* `:add` - add the service to the current and permanent configuration
+* `:remove` - remove the service from the current and permanent configuration
+
+### Attributes
+
 <table>
-	<tr>
-		<th>Attribute</th>
-		<th>Description</th>
-		<th>Example</th>
-		<th>Default</th>
-	</tr>
-	<tr>
-		<td>port</td>
-		<td>(name attribute) the port to manage</td>
-		<td>993/tcp</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>zone</td>
-		<td><code>firewalld</code> zone to add or remove port from</td>
-		<td>public</td>
-		<td>(none, uses default zone)</td>
-	</tr>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>service</td>
+<td>(name attribute) the service to manage</td>
+<td>http</td>
+<td></td>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove service from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
 </table>
 
-Resource Overview
------------------
-### port
+Default action adds a service to the firewall:
+
+```ruby
+firewalld_service 'http'
+```
+
+This will allow access to the http service in the default zone.
+
+#### `:add`
+Add the service to _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_service 'tftp' do
+	action :add
+	zone   'public'
+end
+```
+
+#### `:remove`
+Removes the service from _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_service 'telnet' do
+action :remove
+zone   'public'
+end
+```
+
+## port
+
+The `firewalld_port` resource will add the port for a zone to the current and permanent configurations. If zone is omitted, default zone will be used.
+
+### Actions
+
+* `:add` - add the port to the current and permanent configuration
+* `:remove` - remove the port from the current and permanent configuration
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>port</td>
+<td>(name attribute) the port to manage</td>
+<td>993/tcp</td>
+<td></td>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove port from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
 
 Default action adds a port to the firewall:
 
@@ -40,7 +112,7 @@ firewalld_port '993/tcp'
 
 This will allow access to TCP port 993 in the default zone.
 
-#### `add`
+#### `:add`
 Add the port to _zone_. If zone is omitted, default zone will be used.
 
 ```ruby
@@ -50,7 +122,7 @@ firewalld_port '993/tcp' do
 end
 ```
 
-#### `remove`
+#### `:remove`
 Removes the port from _zone_. If zone is omitted, default zone will be used.
 
 ```ruby
@@ -60,17 +132,121 @@ firewalld_port '993/tcp' do
 end
 ```
 
-### rich_rule
+## rich_rule
 
-The `rich_rule` allows you to create complex rules directly onto the firewall.
-It will load the rule into the running config and pass it to firewalld with the
-`--permanent` flag, to persist it after a reload.
+The `firewalld_rich_rule` resource allows you to create complex rules directly onto the firewall. It will load the rule into the running config and pass it to `firewalld` with the `--permanent` flag, to persist it after a reload.
 
-#### Examples
+### Actions
+
+* `:add` - add the rich rule to the current and permanent configuration
+* `:remove` - remove the rich rule from the current and permanent configuration
+
+### Attributes
+
+The attributes for `rich_resource` map  directly to the `firewall-cmd (1)` command-line parameters.
+More can be read here: [Complex Firewall Rules with Rich Language](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#Configuring_Complex_Firewall_Rules_with_the_Rich-Language_Syntax) and *firewalld.richlanguage (5)*.
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+
+<tr>
+<td>name</td>
+<td>(name attribute) The name of the resource. This is not passed to `firewall-cmd`.</td>
+<td>ssh_add</td>
+<td></td>
+</tr>
+
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove port from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+
+<tr>
+<td>family</td>
+<td>IP family. Choice of 'ipv4' or 'ipv6'.</td>
+<td>ipv6</td>
+<td>ipv4</td>
+</tr>
+
+<tr>
+<td>source_address</td>
+<td>Limits the origin of a connection attempt to a specific range of IPs.</td>
+<td>192.168.100.5/32</td>
+<td>(none, not limited)</td>
+</tr>
+
+<tr>
+<td>destination_address</td>
+<td>Limits the target of a connection attempt to a specific range of IPs.</td>
+<td>192.168.100.5/32</td>
+<td>(none, not limited)</td>
+</tr>
+
+<tr>
+<td>service_name</td>
+<td>The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewalld-cmd --get-services`.</td>
+<td>ssh</td>
+<td></td>
+</tr>
+
+<tr>
+<td>port_number</td>
+<td>Can be a single integer or a port range, for example `5060-5062`. The protocol can be specified. Requires that `port_protocol` attribute be specified also.</td>
+<td>5060</td>
+<td></td>
+</tr>
+
+<tr>
+<td>port_protocol</td>
+<td>The protocol for the specified port, can be 'tcp' or 'udp'. Requires that `port_number` attribute be specified also.</td>
+<td>tcp</td>
+<td></td>
+</tr>
+
+<tr>
+<td>log_prefix</td>
+<td>Logs new connection attempts with kernel logging. This will prepend the log lines with this prefix.</td>
+<td>ssh</td>
+<td></td>
+</tr>
+
+<tr>
+<td>log_level</td>
+<td>Can be one of 'emerg', 'alert', 'error', 'warning', 'notice',
+'info', or 'debug'.</td>
+<td>info</td>
+<td></td>
+</tr>
+
+<tr>
+<td>limit_value</td>
+<td>Limits the rate at which logs are written.</td>
+<td>1/m</td>
+<td>1/m - one write per minute</td>
+</tr>
+
+<tr>
+<td>firewall_action</td>
+<td>Can be one of 'accept', 'reject', or 'drop'. This is the behavior by which all traffic that matches the rule will be handled.</td>
+<td>accept</td>
+<td></td>
+</tr>
+
+</table>
+
+
+### `add`
 
 ```ruby
-# This opens the ssh service to ip `192.168.100.5` and logs at a rate of 1 entry
-# per minute with a prefix of ssh on each log entry.
+# This opens the ssh service to ip `192.168.100.5` and logs at a rate of
+# 1 entry per minute with a prefix of ssh on each log entry.
 #
 
 firewalld_rich_rule "ssh_add" do
@@ -85,42 +261,6 @@ firewalld_rich_rule "ssh_add" do
   action :add
 end
 ```
-
-#### Parameters
-The parameters for `rich_resource` map  directly to their commandline flag.
-More can be read here: [Complex Firewall Rules with Rich Language](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#Configuring_Complex_Firewall_Rules_with_the_Rich-Language_Syntax)
-
-- `name` - The name of the resource. This is not passed to the `firewall-cmd`.
-
-- `service-name` - Name of the service defined by `firewalld-cmd --get-services`.
-
-- `family` - IPv family. Choice of 'ipv4' or 'ipv6'. Default: 'ipv4'
-
-- `zone` - Predefined zone into which a network interface is placed.
-
-- `source_address` - Limits the origin of a connection attempt to a specific 
-  range of IPs.
-
-- `destination_address` - Limits the target of a connection attempt to a
-  specific range of IPs.
-
-- `port_number` - Can be a single integer or a port range, for example `5060-5062`.
-  The protocol can be specified. Depends on `port_protocol` parameter.
-
-- `port_protocol` - The protocol for the specified port, can be 'tcp' or 'udp'. 
-  Depends on `port_number` parameter and defaults to 'tcp'.
-
-- `log_prefix` - Logs new connection attempts with kernel logging. This will 
-  prepend the log lines with this prefix.
-
-- `log_level` - Can be one of 'emerg', 'alert', 'error', 'warning', 'notice', 
-  'info', or 'debug'.
-
-- `limit_value` - Limits the rate at which logs are written. Defaults to "1/m" 
-  one write per minute.
-
-- `firewall_action` - Can be one of 'accept', 'reject', or 'drop'. This is the 
-  behavior by which all traffic that matches the rule will be handled.
 
 Usage
 -----

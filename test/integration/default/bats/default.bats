@@ -29,3 +29,23 @@
 	run firewall-cmd --permanent --query-port=1002/tcp
 	[ "$status" -eq 0 ]
 }
+
+@test "service http was added to permanent config" {
+	run firewall-cmd --permanent --query-service=http
+	[ "$status" -eq 0 ]
+}
+
+@test "service http was added to runtime config" {
+	run firewall-cmd --query-service=http
+	[ "$status" -eq 0 ]
+}
+
+@test "service telnet was removed from runtime config" {
+	run firewall-cmd --query-service=telnet
+	[ "$status" -eq 1 ]
+}
+
+@test "service telnet was removed from permanent config" {
+	run firewall-cmd --permanent --query-service=telnet
+	[ "$status" -eq 1 ]
+}

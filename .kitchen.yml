@@ -11,7 +11,8 @@ platforms:
 suites:
   - name: default
     run_list:
-      - "recipe[fixture::default]"
+      - "recipe[fixture::port]"
+      - "recipe[fixture::service]"
     attributes:
 
   - name: rich_rule
