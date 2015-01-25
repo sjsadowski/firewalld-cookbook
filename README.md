@@ -143,8 +143,7 @@ The `firewalld_rich_rule` resource allows you to create complex rules directly o
 
 ### Attributes
 
-The attributes for `rich_resource` map  directly to the `firewall-cmd (1)` command-line parameters.
-More can be read here: [Complex Firewall Rules with Rich Language](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#Configuring_Complex_Firewall_Rules_with_the_Rich-Language_Syntax) and *firewalld.richlanguage (5)*.
+The attributes for `rich_rule` map  directly to the `firewall-cmd (1)` command-line parameters. More can be read here: [Complex Firewall Rules with Rich Language](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#Configuring_Complex_Firewall_Rules_with_the_Rich-Language_Syntax) and *firewalld.richlanguage (5)*.
 
 <table>
 <tr>
@@ -198,7 +197,7 @@ More can be read here: [Complex Firewall Rules with Rich Language](https://acces
 
 <tr>
 <td>port_number</td>
-<td>Can be a single integer or a port range, for example `5060-5062`. The protocol can be specified. Requires that `port_protocol` attribute be specified also.</td>
+<td>Can be a single integer or a port range, for example '5060-5062'. The protocol can be specified. Requires that `port_protocol` attribute be specified also.</td>
 <td>5060</td>
 <td></td>
 </tr>
