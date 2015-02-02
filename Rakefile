@@ -3,7 +3,9 @@ require 'bundler/setup'
 namespace :style do
   require 'foodcritic'
   desc 'Run Chef style checks'
-  FoodCritic::Rake::LintTask.new(:chef)
+  FoodCritic::Rake::LintTask.new(:chef) do |t|
+    t.options = { tags: %w(~FC001) }
+  end
 end
 
 require 'rspec/core/rake_task'

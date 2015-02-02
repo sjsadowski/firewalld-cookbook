@@ -261,8 +261,14 @@ firewalld_rich_rule "ssh_add" do
 end
 ```
 
-Usage
------
+# Recipes
+
+* default - installs and enables `firewalld`.
+* disable - disable `firewalld` and use `iptables` if `node[:firewalld][:iptables_fallback]` is set.
+* enable - revert to `firewalld` if `node[:firewalld][:iptables_fallback]` is set.
+
+# Usage
+
 If you're using [Berkshelf](http://berkshelf.com/), just add `firewalld` to your
 `Berksfile` and `metadata.rb`:
 
