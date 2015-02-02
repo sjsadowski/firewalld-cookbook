@@ -40,6 +40,6 @@ def rich_rule
     cmd += "log prefix='#{new_resource.log_prefix}' " if new_resource.log_prefix
     cmd += "level='#{new_resource.log_level}' " if new_resource.log_level
     cmd += "limit value='#{new_resource.limit_value}' " if new_resource.limit_value
-    cmd += "#{new_resource.firewall_action}" if new_resource.firewall_action # ~FC002
+    cmd += new_resource.firewall_action if new_resource.firewall_action
     cmd
 end
