@@ -84,126 +84,6 @@ firewalld_interface 'em1' do
 end
 ```
 
-## service
-
-The `firewalld_service` resource will add the service for a zone to the current and permanent configurations. The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewall-cmd --get-services`. If zone is omitted, default zone will be used.
-
-### Actions
-
-* `:add` - add the service to the current and permanent configuration
-* `:remove` - remove the service from the current and permanent configuration
-
-### Attributes
-
-<table>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-<th>Example</th>
-<th>Default</th>
-</tr>
-<tr>
-<td>service</td>
-<td>(name attribute) the service to manage</td>
-<td>http</td>
-<td></td>
-</tr>
-<tr>
-<td>zone</td>
-<td><code>firewalld</code> zone to add or remove service from</td>
-<td>public</td>
-<td>(none, uses default zone)</td>
-</tr>
-</table>
-
-Default action adds a service to the firewall:
-
-```ruby
-firewalld_service 'http'
-```
-
-This will allow access to the http service in the default zone.
-
-#### `:add`
-Add the service to _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_service 'tftp' do
-	action :add
-	zone   'public'
-end
-```
-
-#### `:remove`
-Removes the service from _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_service 'telnet' do
-action :remove
-zone   'public'
-end
-```
-
-## port
-
-The `firewalld_port` resource will add the port for a zone to the current and permanent configurations. If zone is omitted, default zone will be used.
-
-### Actions
-
-* `:add` - add the port to the current and permanent configuration
-* `:remove` - remove the port from the current and permanent configuration
-
-### Attributes
-
-<table>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-<th>Example</th>
-<th>Default</th>
-</tr>
-<tr>
-<td>port</td>
-<td>(name attribute) the port to manage</td>
-<td>993/tcp</td>
-<td></td>
-</tr>
-<tr>
-<td>zone</td>
-<td><code>firewalld</code> zone to add or remove port from</td>
-<td>public</td>
-<td>(none, uses default zone)</td>
-</tr>
-</table>
-
-Default action adds a port to the firewall:
-
-```ruby
-firewalld_port '993/tcp'
-```
-
-This will allow access to TCP port 993 in the default zone.
-
-#### `:add`
-Add the port to _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_port '993/tcp' do
-  action :add
-  zone   'public'
-end
-```
-
-#### `:remove`
-Removes the port from _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_port '993/tcp' do
-	action :remove
-	zone   'public'
-end
-```
-
 ## rich_rule
 
 The `firewalld_rich_rule` resource allows you to create complex rules directly onto the firewall. It will load the rule into the running config and pass it to `firewalld` with the `--permanent` flag, to persist it after a reload.
@@ -330,6 +210,126 @@ firewalld_rich_rule "ssh_add" do
   limit_value '1/m'
   firewall_action 'accept'
   action :add
+end
+```
+
+## service
+
+The `firewalld_service` resource will add the service for a zone to the current and permanent configurations. The service name is one of the `firewalld` provided services. To get a list of the supported services, use `firewall-cmd --get-services`. If zone is omitted, default zone will be used.
+
+### Actions
+
+* `:add` - add the service to the current and permanent configuration
+* `:remove` - remove the service from the current and permanent configuration
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>service</td>
+<td>(name attribute) the service to manage</td>
+<td>http</td>
+<td></td>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove service from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
+
+Default action adds a service to the firewall:
+
+```ruby
+firewalld_service 'http'
+```
+
+This will allow access to the http service in the default zone.
+
+#### `:add`
+Add the service to _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_service 'tftp' do
+	action :add
+	zone   'public'
+end
+```
+
+#### `:remove`
+Removes the service from _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_service 'telnet' do
+action :remove
+zone   'public'
+end
+```
+
+## port
+
+The `firewalld_port` resource will add the port for a zone to the current and permanent configurations. If zone is omitted, default zone will be used.
+
+### Actions
+
+* `:add` - add the port to the current and permanent configuration
+* `:remove` - remove the port from the current and permanent configuration
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>port</td>
+<td>(name attribute) the port to manage</td>
+<td>993/tcp</td>
+<td></td>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove port from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
+
+Default action adds a port to the firewall:
+
+```ruby
+firewalld_port '993/tcp'
+```
+
+This will allow access to TCP port 993 in the default zone.
+
+#### `:add`
+Add the port to _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_port '993/tcp' do
+  action :add
+  zone   'public'
+end
+```
+
+#### `:remove`
+Removes the port from _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_port '993/tcp' do
+	action :remove
+	zone   'public'
 end
 ```
 
