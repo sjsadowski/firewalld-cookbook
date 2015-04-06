@@ -7,8 +7,8 @@
 # List of all actions supported by provider
 actions :add, :change, :remove
 
-# Make add the default action
-default_action :add
+# Make change the default action
+default_action :change
 
 # Required attributes
 attribute :interface, :kind_of => String, :name_attribute => true
