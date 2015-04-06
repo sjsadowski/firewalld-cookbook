@@ -436,6 +436,7 @@ License & Authors
 -----------------
 - Author:: Jeff Hutchison <jeff@jeffhutchison.com>
 - Author:: Manuel Toledo   <mtoledo@adobe.com>
+- Author:: Johnathan Kupferer   <jtk@uic.edu>
 
 ```text
 Copyright 2015, Jeff Hutchison
