@@ -15,6 +15,6 @@ execute "reload firewalld for new zones to appear in runtime config" do
   command "firewall-cmd --reload"
 end
 
-firewalld_interface "zone2" do
+firewalld_zone "zone2" do
   action :delete
 end
