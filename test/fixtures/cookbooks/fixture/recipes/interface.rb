@@ -5,11 +5,11 @@ end
 firewalld_interface "eth0"
 
 %w{eth1 eth2}.each do |eth|
-  execute "add interface #{eth} to runtime config" do
-    command "firewall-cmd --add-interface=#{eth}"
+  execute "change interface #{eth} to runtime config" do
+    command "firewall-cmd --change-interface=#{eth}"
   end
-  execute "add interface #{eth} to permanent config" do
-    command "firewall-cmd --permanent --add-interface=#{eth}"
+  execute "change interface #{eth} to permanent config" do
+    command "firewall-cmd --permanent --change-interface=#{eth}"
   end
 end
 

@@ -6,7 +6,6 @@ describe 'fixture::zone' do
   end
 
   it "installs, enables, and starts firewalld service" do
-    expect(chef_run).to install_package('firewalld')
     expect(chef_run).to enable_service('firewalld')
     expect(chef_run).to start_service('firewalld')
   end
