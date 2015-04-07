@@ -443,42 +443,41 @@ The `firewalld_source` resource will add a source network address range to a zon
 </tr>
 </table>
 
-Default action, `:change`, associates an interface with a firewall zone:
+Default action, `:create`, creates or updates a zone:
 
 ```ruby
-firewalld_source '192.168.100.0/24'
+firewalld_zone 'database'
 ```
 
-This will associate the source IP address range "192.168.100.0/24" with the default zone.
+This will create a new firewalld zone called "database".
 
-### `:add`
-Add the source to _zone_. If zone is omitted, default zone will be used.
+### `:create`
+Create or update the zone.
 
 ```ruby
-firewalld_source '192.168.0.0/24' do
-        action :add
-        zone   'internal'
+firewalld_zone 'secure' do
+  action :create
+  target 'DROP'
+  default true
 end
 ```
 
-### `:change`
-Add the source to _zone_, and remove it from any other zones it may be associated
-with. If zone is omitted, default zone will be used.
+### `:create_if_missing`
+Create the zone only if it does not exist.
 
 ```ruby
-firewalld_source '192.168.0.0/24' do
-        action :change
-        zone   'internal'
+firewalld_zone 'database' do
+  action :create_if_missing
+  target 'DROP'
 end
 ```
 
-### `:remove`
-Remove the interface from _zone_. If zone is omitted, default zone will be used.
+### `:delete`
+Delete the zone.
 
 ```ruby
-firewalld_interface '192.168.0.0/24' do
-        action :remove
-        zone   'internal'
+firewalld_zone 'secure' do
+        action :delete
 end
 ```
 
