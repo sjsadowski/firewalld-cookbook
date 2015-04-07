@@ -5,7 +5,7 @@ firewalld_service "http"
   execute "add service #{p} to runtime config" do
     command "firewall-cmd --add-service=#{p}"
   end
-  execute "add port #{p} to permanent config" do
+  execute "add service #{p} to permanent config" do
     command "firewall-cmd --permanent --add-service=#{p}"
   end
 end
