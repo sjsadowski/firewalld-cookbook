@@ -5,12 +5,18 @@ describe 'fixture::zone' do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end
 
-  it "creates zone testzone" do
-    expect(chef_run).to create_firewalld_zone("testzone")
+  it "installs, enables, and starts firewalld service" do
+    expect(chef_run).to install_package('firewalld')
+    expect(chef_run).to enable_service('firewalld')
+    expect(chef_run).to start_service('firewalld')
   end
 
-  it "deletes zone testzone" do
-    expect(chef_run).to delete_firewalld_zone("testzone")
+  it "creates zone zone1" do
+    expect(chef_run).to create_firewalld_zone("zone1")
+  end
+
+  it "deletes zone zone2" do
+    expect(chef_run).to delete_firewalld_zone("zone2")
   end
 
 end
