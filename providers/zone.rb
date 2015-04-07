@@ -14,8 +14,10 @@ action :create_if_missing do
 
   if zone_exists
     Chef::Log.debug("firewalld zone #{new_resource.zone} exists, taking no action.")
+    new_resource.updated_by_last_action( false )
   else
     action_create
+    new_resource.updated_by_last_action( true )
   end
 end
 
