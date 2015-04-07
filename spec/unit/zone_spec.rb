@@ -5,7 +5,7 @@ describe 'fixture::zone' do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end
 
-  it "installs, enables, and starts firewalld service" do
+  it "enables, and starts firewalld service" do
     expect(chef_run).to enable_service('firewalld')
     expect(chef_run).to start_service('firewalld')
   end
