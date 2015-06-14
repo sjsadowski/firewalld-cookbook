@@ -11,12 +11,10 @@ end
 
 service 'iptables' do
   action [:enable, :start]
-  only_if { node[:firewalld][:iptables_fallback] }
+  only_if { node['firewalld']['iptables_fallback'] }
 end
 
 service 'ip6tables' do
   action [:enable, :start]
-  only_if { node[:firewalld][:iptables_fallback] }
+  only_if { node['firewalld']['iptables_fallback'] }
 end
-
-

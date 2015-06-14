@@ -1,1 +1,1 @@
-default[:firewalld][:iptables_fallback] = true
+default['firewalld']['iptables_fallback'] = true
