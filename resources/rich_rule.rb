@@ -23,5 +23,5 @@ attribute :port_number, :kind_of => [String, NilClass]
 attribute :port_protocol, :kind_of => [String, NilClass], :default => "tcp"
 attribute :log_prefix, :kind_of => [String, NilClass]
 attribute :log_level, :kind_of => [String, NilClass]
-attribute :limit_value, :kind_of => [String, NilClass], :default => "1/m"
+attribute :limit_value, :kind_of => [String, NilClass]
 attribute :firewall_action, :kind_of => [String, NilClass]
