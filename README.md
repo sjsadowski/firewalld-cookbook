@@ -1,9 +1,9 @@
 firewalld LWRP
 ==============
-[![Build Status](https://travis-ci.org/jhh/firewalld-cookbook.svg?branch=master)][travis]
+[![Build Status](https://travis-ci.org/rigrassm/firewalld-cookbook.svg?branch=master)][travis]
 [![Cookbook Version](http://img.shields.io/cookbook/v/firewalld.svg)][cookbook]
 
-[travis]: https://travis-ci.org/jhh/firewalld-cookbook
+[travis]: https://travis-ci.org/rigrassm/firewalld-cookbook
 [cookbook]: https://supermarket.chef.io/cookbooks/firewalld
 
 [Firewalld](https://fedoraproject.org/wiki/FirewallD) is the userland interface to dynamically managing a Linux firewall, introduced in Fedora 15 and Centos/RHEL 7.

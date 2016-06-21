@@ -4,6 +4,8 @@
 #
 # Copyright:: 2015, Jeff Hutchison
 
+use_inline_resources
+
 action :add do
   e = execute "add port #{new_resource.name} to zone" do
     not_if "firewall-cmd #{zone} --query-rich-rule=\"#{rich_rule}\""
