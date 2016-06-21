@@ -24,6 +24,10 @@ describe 'fixture::port' do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end
 
+  it "installs firewalld" do
+    expect(chef_run).to install_package("firewalld")
+  end
+
   it "adds port 993/tcp" do
     expect(chef_run).to add_firewalld_port("993/tcp")
   end
