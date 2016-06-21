@@ -1,11 +1,11 @@
 name             'firewalld'
-maintainer       'Jeff Hutchison'
-maintainer_email 'jeff@jeffhutchison.com'
-source_url       'https://github.com/jhh/firewalld-cookbook'
+maintainer       'Ricky Grassmuck'
+maintainer_email 'rigrassm@gmail.com'
+source_url       'https://github.com/rigrassm/firewalld-cookbook'
 license          'Apache v2.0'
 description      'Installs/Configures firewalld'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.1.1'
+version          '1.1.2'
 
 supports         'fedora', ">= 15.0"
 supports         'centos', ">= 7.0"
