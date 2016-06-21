@@ -1,11 +1,13 @@
 name             'firewalld'
 maintainer       'Ricky Grassmuck'
 maintainer_email 'rigrassm@gmail.com'
-source_url       'https://github.com/rigrassm/firewalld-cookbook'
+source_url       'https://github.com/rigrassm/firewalld-cookbook' if respond_to?(:issues_url
+issues_url       'https://github.com/chef-cookbooks/something/issues' if respond_to?(:issues_url)
 license          'Apache v2.0'
 description      'Installs/Configures firewalld'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.1.2'
+       
 
 supports         'fedora', ">= 15.0"
 supports         'centos', ">= 7.0"
