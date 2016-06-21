@@ -6,6 +6,6 @@
 
 package 'firewalld'
 
-service "firewalld" do
+service 'firewalld' do
   action [:enable, :start]
 end
