@@ -3,7 +3,7 @@
 # Recipe:: disable
 #
 
-package 'iptables-services'
+package 'iptables-services' if node['firewalld']['iptables_fallback']
 
 service 'firewalld' do
   action [:disable, :stop]
