@@ -9,7 +9,7 @@ describe 'fixture::service' do
     expect(chef_run).to add_firewalld_service("http")
   end
 
-  it "removes service http" do
+  it "removes service telnet" do
     expect(chef_run).to remove_firewalld_service("telnet")
   end
 
