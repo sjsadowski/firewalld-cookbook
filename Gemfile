@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf'
+gem 'stove'
 
 group :integration do
   gem 'test-kitchen'
