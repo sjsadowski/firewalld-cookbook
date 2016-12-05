@@ -4,6 +4,8 @@
 #
 # Copyright:: 2015, Johnathan Kuperer
 
+use_inline_resources
+
 action :add do
   e = execute "add source #{new_resource.source} to zone" do
     not_if "firewall-cmd --permanent #{zone} --query-source=#{new_resource.source}"

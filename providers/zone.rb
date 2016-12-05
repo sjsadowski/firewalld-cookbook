@@ -4,6 +4,8 @@
 #
 # Copyright:: 2015, Johnathan Kuperer
 
+use_inline_resources
+
 action :create_if_missing do
 
   # Check if zone exists by attempting to call --get-target
@@ -35,7 +37,7 @@ action :create do
 
   e_target = execute "set target for #{new_resource.zone} to #{target}" do
     #not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
-    not_if { target == `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` }
+    not_if { target == Mixlib::ShellOut.new('firewall-cmd --permanent --zone=#{new_resource.zone} --get-target') }
     command(<<-EOC)
       firewall-cmd --permanent --zone=#{new_resource.zone} --set-target=#{target}
       firewall-cmd --reload
@@ -45,7 +47,7 @@ action :create do
 
   if new_resource.default
     e_default = execute "set #{new_resource.zone} to be default zone" do
-      not_if { new_resource.zone == `firewall-cmd --get-default-zone` }
+      not_if { new_resource.zone == Mixlib::ShellOut.new('firewall-cmd --get-default-zone') }
       command(<<-EOC)
         firewall-cmd --set-default-zone=#{new_resource.zone}
       EOC
