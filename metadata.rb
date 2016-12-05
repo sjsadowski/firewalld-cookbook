@@ -1,4 +1,4 @@
-name             'firewalld'
+name             'firewalld-cookbook'
 maintainer       'Ricky Grassmuck'
 maintainer_email 'rigrassm@gmail.com'
 source_url       'https://github.com/rigrassm/firewalld-cookbook' if respond_to?(:source_url)
