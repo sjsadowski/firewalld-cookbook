@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.1.3
+
+### New
+
+* Added resources for firewalld zone [University of Illinois Chicago]
+* Make iptables installation conditional on fallback attribute [Rob Nasby]
+
+### Fix
+
+* Correct Foodcritic message FC048 [Ricky Grassmuck]
+* Correct Foodcritic message FC059 [Ricky Grassmuck]
+* Bump ruby version to 2.2.2 in .travis.yaml [Ricky Grassmuck]
+
+## 1.1.2
+
+### New
+
+* Add support for Debian 8 and Ubuntu 14.04 [Stephen Sadowski]
+
+### Fix
+
+* Normalize default.rb quotes [Jason Martin]
+* Add use_inline_features to providers [Ricky Grassmuck]
+* Add issues_url to metadata.rb [Ricky Grassmuck]
+* Updated travis-ci link in README [Ricky Grassmuck]
+
 ## 1.1.0
 
 ### New
