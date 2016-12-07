@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.5
+* Adds resource for firewalld masquerade [Dru Goradia]
+
 ## 1.1.3
 
 ### New

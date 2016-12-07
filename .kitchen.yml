@@ -14,6 +14,7 @@ suites:
     run_list:
       - "recipe[fixture::port]"
       - "recipe[fixture::service]"
+      - "recipe[fixture::masquerade]"
     attributes:
 
   - name: rich_rule

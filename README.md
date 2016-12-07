@@ -481,6 +481,60 @@ firewalld_zone 'secure' do
 end
 ```
 
+## masquerade
+
+The `firewalld_masquerade` resource will add the masquerading option to a zone. If zone is omitted, default zone will be used. This is equivalent to `firewall-cmd --zone=public --add-masquerade` or `firewall-cmd --zone=public --remove-masquerade`.
+
+### Actions
+
+* `:add` - add the masquerade option to the current and permanent configuration. (default)
+* `:remove` - remove the masquerade option from the current and permanent configuration.
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove masquerade</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
+
+Default action, `:add`, adds the masquerade option to a zone:
+
+```ruby
+firewalld_masquerade 'public'
+```
+
+This will add the masquerade option to the "public" firewalld zone.
+
+### `:add`
+Add masquerade to a zone.
+
+```ruby
+firewalld_masquerade 'add masquerading to public zone' do
+  action :add
+  zone 'public'
+end
+```
+
+### `:remove`
+Remove masquerade from a zone.
+
+```ruby
+firewalld_masquerade 'remove masquerading from public zone' do
+  action :remove
+  zone 'public'
+end
+```
+
 # Recipes
 
 * default - installs and enables `firewalld`.
