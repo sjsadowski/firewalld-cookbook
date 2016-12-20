@@ -139,3 +139,23 @@
 	run firewall-cmd --zone=zone3 --list-all
 	[ "$status" -eq 0 ]
 }
+
+@test 'masquerade was added to public zone for runtime config' {
+	run firewall-cmd --zone=public --add-masquerade
+	[ "$status" -eq 0 ]
+}
+
+@test 'masquerade was added to public zone for permanent config' {
+	run firewall-cmd --permanent --zone=public --add-masquerade
+	[ "$status" -eq 0 ]
+}
+
+@test 'masquerade was removed from public zone for runtime config' {
+	run firewall-cmd --zone=public --remove-masquerade
+	[ "$status" -eq 0 ]
+}
+
+@test 'masquerade was removed from public zone for permanent config' {
+	run firewall-cmd --permanent --zone=public --remove-masquerade
+	[ "$status" -eq 0 ]
+}

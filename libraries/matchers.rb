@@ -54,4 +54,12 @@ if defined?(ChefSpec)
   def delete_firewalld_zone(name)
     ChefSpec::Matchers::ResourceMatcher.new(:firewalld_zone, :delete, name)
   end
+
+  def add_firewalld_masquerade(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_masquerade, :add, name)
+  end
+
+  def remove_firewalld_masquerade(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_masquerade, :remove, name)
+  end
 end
