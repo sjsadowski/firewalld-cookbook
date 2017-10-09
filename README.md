@@ -545,7 +545,6 @@ The `forward` resource will add forward ports to a zone. If zone is omitted, def
 * `:remove` - remove the forward port.
 
 ### Attributes
-
 <table>
 <tr>
 <th>Attribute</th>
@@ -558,6 +557,30 @@ The `forward` resource will add forward ports to a zone. If zone is omitted, def
 <td><code>firewalld</code> zone to add or remove forward ports from</td>
 <td>public</td>
 <td>(none, uses default zone)</td>
+</tr>
+<tr>
+<td>port</td>
+<td>The destination port to redirect</td>
+<td>443</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>to_port</td>
+<td>The port to redirected to</td>
+<td>8443</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>The protocol used for the rule</td>
+<td>:tcp</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td>address</td>
+<td>the address to redirect to</td>
+<td>10.0.0.100</td>
+<td>(none)</td>
 </tr>
 </table>
 
