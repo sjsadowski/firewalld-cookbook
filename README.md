@@ -535,6 +535,57 @@ firewalld_masquerade 'remove masquerading from public zone' do
 end
 ```
 
+## forward
+
+The `forward` resource will add forward ports to a zone. If zone is omitted, default zone will be used. This is equivalent to `firewall-cmd --zone=public --add-forward-port=port=<port>:proto=<protocol>:toport=<port>`.
+
+### Actions
+
+* `:add` - add the forward port. (default)
+* `:remove` - remove the forward port.
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove forward ports from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
+
+Default action, `:add`, adds the forward port
+
+```ruby
+firewalld_forward '443 to 8443' do
+  port 443
+  to_port 8443
+  protocol :tcp
+  zone 'public'
+end
+```
+
+### `:remove`
+Remove the forward port
+
+```ruby
+firewalld_forward 'remove port 443' do
+  port 443
+  to_port 8443
+  protocol :tcp
+  zone 'public'
+
+  action :remove
+end
+```
+
 # Recipes
 
 * default - installs and enables `firewalld`.
