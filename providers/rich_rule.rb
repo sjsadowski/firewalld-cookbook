@@ -38,7 +38,8 @@ def rich_rule
     cmd += "source address='#{new_resource.source_address}' " if new_resource.source_address
     cmd += "destination address='#{new_resource.destination_address}' " if new_resource.destination_address
     cmd += "service name='#{new_resource.service_name}' " if new_resource.service_name
-    cmd += "port port='#{new_resource.port_number}' protocol='#{new_resource.port_protocol}' " if new_resource.port_number
+    cmd += "port port='#{new_resource.port_number}' protocol='#{new_resource.port_protocol}' " if new_resource.port_number && new_resource.port_protocol
+    cmd += "protocol value='#{new_resource.port_protocol}' " if new_resource.port_protocol && not new_resource.port_number
     cmd += "log " if new_resource.log_prefix || new_resource.log_level || new_resource.limit_value
     cmd += "prefix='#{new_resource.log_prefix}' " if new_resource.log_prefix
     cmd += "level='#{new_resource.log_level}' " if new_resource.log_level
