@@ -62,4 +62,12 @@ if defined?(ChefSpec)
   def remove_firewalld_masquerade(name)
     ChefSpec::Matchers::ResourceMatcher.new(:firewalld_masquerade, :remove, name)
   end
+
+  def add_firewalld_forward(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_forward_port, :add, name)
+  end
+
+  def remove_firewalld_forward(name)
+    ChefSpec::Matchers::ResourceMatcher.new(:firewalld_forward_port, :remove, name)
+  end
 end

@@ -159,3 +159,13 @@
 	run firewall-cmd --permanent --zone=public --remove-masquerade
 	[ "$status" -eq 0 ]
 }
+
+@test 'port 443 was added as a forward port' {
+	run firewall-cmd --query-forward-port=port=443:proto=tcp:toport=8443
+	[ "$status" -eq 0 ]
+}
+
+@test 'port 443 was added as a forward port for permanent config' {
+	run firewall-cmd --permanent --query-forward-port=port=443:proto=tcp:toport=8443
+	[ "$status" -eq 0 ]
+}
