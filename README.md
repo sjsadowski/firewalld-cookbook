@@ -12,6 +12,14 @@ firewalld LWRP
 
 This `firewalld` cookbook provides three resources for adding and removing  services, ports, and rules.
 
+* [interface](#interface)
+* [rich_rule](#rich_rule)
+* [service](#service)
+* [port](#port)
+* [source](#source)
+* [zone](#zone)
+* [masquerade](#masquerade)
+
 ## interface
 
 The `firewalld_interface` resource will add a network interface to a zone for the current and permanent configurations. The interface name is a string that should match a network interface on the system. If zone is omitted, default zone will be used.
@@ -333,6 +341,78 @@ firewalld_port '993/tcp' do
 end
 ```
 
+## source
+
+The `firewalld_source` resource will add a source network address range to a zone for the current and permanent configurations. The source name is a network address in CIDR notation such as "192.168.100.0/24". If zone is omitted, default zone will be used.
+
+### Actions
+
+* `:add` - add the source to the current and permanent configuration.
+* `:change` - change the source to the current and permanent configuration. (default)
+* `:remove` - remove the source from the current and permanent configuration.
+
+### Attributes
+
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th>Example</th>
+<th>Default</th>
+</tr>
+<tr>
+<td>source</td>
+<td>(name attribute) the network subnet specification manage</td>
+<td>em1</td>
+<td></td>
+</tr>
+<tr>
+<td>zone</td>
+<td><code>firewalld</code> zone to add or remove source from</td>
+<td>public</td>
+<td>(none, uses default zone)</td>
+</tr>
+</table>
+
+Default action, `:create`, creates or updates a zone:
+
+```ruby
+firewalld_source '192.168.100.0/24'
+```
+
+This will associate the source IP address range "192.168.100.0/24" with the default zone.
+
+### `:add`
+Add the source to _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_source '192.168.0.0/24' do
+        action :add
+        zone   'internal'
+end
+```
+
+### `:change`
+Add the source to _zone_, and remove it from any other zones it may be associated
+with. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_source '192.168.0.0/24' do
+        action :change
+        zone   'internal'
+end
+```
+
+### `:remove`
+Remove the interface from _zone_. If zone is omitted, default zone will be used.
+
+```ruby
+firewalld_interface '192.168.0.0/24' do
+        action :remove
+        zone   'internal'
+end
+```
+
 ## zone
 
 The `firewalld_zone` resource will add a firewalld zone for current and permanent configurations.
@@ -373,77 +453,6 @@ The `firewalld_zone` resource will add a firewalld zone for current and permanen
 </table>
 
 Default action, `:change`, associates an interface with a firewall zone:
-
-```ruby
-firewalld_source '192.168.100.0/24'
-```
-
-This will associate the source IP address range "192.168.100.0/24" with the default zone.
-
-### `:add`
-Add the source to _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_source '192.168.0.0/24' do
-        action :add
-        zone   'internal'
-end
-```
-
-### `:change`
-Add the source to _zone_, and remove it from any other zones it may be associated
-with. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_source '192.168.0.0/24' do
-        action :change
-        zone   'internal'
-end
-```
-
-### `:remove`
-Remove the interface from _zone_. If zone is omitted, default zone will be used.
-
-```ruby
-firewalld_interface '192.168.0.0/24' do
-        action :remove
-        zone   'internal'
-end
-```
-## source
-
-The `firewalld_source` resource will add a source network address range to a zone for the current and permanent configurations. The source name is a network address in CIDR notation such as "192.168.100.0/24". If zone is omitted, default zone will be used.
-
-### Actions
-
-* `:add` - add the source to the current and permanent configuration.
-* `:change` - change the source to the current and permanent configuration. (default)
-* `:remove` - remove the source from the current and permanent configuration.
-
-### Attributes
-
-<table>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-<th>Example</th>
-<th>Default</th>
-</tr>
-<tr>
-<td>source</td>
-<td>(name attribute) the network subnet specification manage</td>
-<td>em1</td>
-<td></td>
-</tr>
-<tr>
-<td>zone</td>
-<td><code>firewalld</code> zone to add or remove source from</td>
-<td>public</td>
-<td>(none, uses default zone)</td>
-</tr>
-</table>
-
-Default action, `:create`, creates or updates a zone:
 
 ```ruby
 firewalld_zone 'database'
