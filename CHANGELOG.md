@@ -1,4 +1,8 @@
 # Changelog
+## 1.2.0
+* Added port forwarding [Alfred Moreno]
+* Added protocol specification [Jarrod Makin]
+* Updated README [Grummfy]
 
 ## 1.1.5
 * Adds resource for firewalld masquerade [Dru Goradia]
