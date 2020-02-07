@@ -1,4 +1,8 @@
 # Changelog
+
+## 1.2.1
+* Fix compile error in `rich_rule.rb`
+
 ## 1.2.0
 * Added port forwarding [Alfred Moreno]
 * Added protocol specification [Jarrod Makin]
