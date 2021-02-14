@@ -26,8 +26,8 @@ end
 
 def firewall_command(operation)
     <<-EOC
-        firewall-cmd #{zone} --#{operation.to_s}-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}"
-        firewall-cmd --permanent #{zone} --#{operation.to_s}-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}"
+        firewall-cmd #{zone} --#{operation.to_s}-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}
+        firewall-cmd --permanent #{zone} --#{operation.to_s}-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}
     EOC
 end
 
