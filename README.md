@@ -164,7 +164,7 @@ The attributes for `rich_rule` map  directly to the `firewall-cmd (1)` command-l
 
 <tr>
 <td>port_protocol</td>
-<td>The protocol for the specified port, can be 'tcp' or 'udp'. Requires that <code>port_number</code> attribute be specified also.</td>
+<td>When <code>port_number</code> is given, the protocol for the specified port, can be 'tcp' or 'udp' and requires that <code>port_number</code> attribute be specified also.  When <code>port_number</code> is not given, a protocol from /etc/protocols can be given.</td>
 <td>tcp</td>
 <td></td>
 </tr>
