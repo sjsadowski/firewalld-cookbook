@@ -1,10 +1,8 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: source
 #
 # Copyright:: 2015, Johnathan Kuperer
-
-use_inline_resources
 
 action :add do
   e = execute "add source #{new_resource.source} to zone" do

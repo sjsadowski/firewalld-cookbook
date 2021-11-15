@@ -2,9 +2,9 @@ service 'firewalld' do
   action [:enable, :start]
 end
 
-firewalld_interface "eth0"
+firewalld_interface 'eth0'
 
-%w{eth1 eth2}.each do |eth|
+%w(eth1 eth2).each do |eth|
   execute "change interface #{eth} to runtime config" do
     command "firewall-cmd --change-interface=#{eth}"
   end
@@ -13,6 +13,6 @@ firewalld_interface "eth0"
   end
 end
 
-firewalld_interface "eth1" do
+firewalld_interface 'eth1' do
   action :remove
 end

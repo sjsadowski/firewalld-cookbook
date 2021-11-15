@@ -1,10 +1,8 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: service
 #
 # Copyright:: 2015, Jeff Hutchison
-
-use_inline_resources
 
 action :add do
   e = execute "add service #{new_resource.service} to zone" do

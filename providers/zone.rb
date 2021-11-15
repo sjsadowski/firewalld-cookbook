@@ -1,25 +1,22 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: zone
 #
 # Copyright:: 2015, Johnathan Kuperer
 
-use_inline_resources
-
 action :create_if_missing do
-
   # Check if zone exists by attempting to call --get-target
   zone_exists = system(
-    'firewall-cmd','--permanent',"--zone=#{new_resource.zone}","--get-target",
-    :out=>["/dev/null","w"], :err=>["/dev/null","w"]
+    'firewall-cmd', '--permanent', "--zone=#{new_resource.zone}", '--get-target',
+    out: ['/dev/null', 'w'], err: ['/dev/null', 'w']
   )
 
   if zone_exists
     Chef::Log.debug("firewalld zone #{new_resource.zone} exists, taking no action.")
-    new_resource.updated_by_last_action( false )
+    new_resource.updated_by_last_action(false)
   else
     action_create
-    new_resource.updated_by_last_action( true )
+    new_resource.updated_by_last_action(true)
   end
 end
 
@@ -36,8 +33,8 @@ action :create do
   updated ||= e_create.updated_by_last_action?
 
   e_target = execute "set target for #{new_resource.zone} to #{target}" do
-    #not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
-    not_if { target == Mixlib::ShellOut.new('firewall-cmd --permanent --zone=#{new_resource.zone} --get-target') }
+    # not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
+    not_if { target == Mixlib::ShellOut.new("firewall-cmd --permanent --zone=#{new_resource.zone} --get-target") }
     command(<<-EOC)
       firewall-cmd --permanent --zone=#{new_resource.zone} --set-target=#{target}
       firewall-cmd --reload
@@ -55,7 +52,7 @@ action :create do
     updated ||= e_default.updated_by_last_action?
   end
 
-  new_resource.updated_by_last_action( updated )
+  new_resource.updated_by_last_action(updated)
 end
 
 action :delete do
@@ -69,5 +66,5 @@ action :delete do
 end
 
 def target
-  new_resource.target ? new_resource.target : 'default'
+  new_resource.target || 'default'
 end

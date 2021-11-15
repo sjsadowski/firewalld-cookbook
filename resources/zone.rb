@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: zone
 #
 # Copyright:: 2015, Johnathan Kupferer
@@ -11,8 +11,8 @@ actions :create, :create_if_missing, :delete
 default_action :create
 
 # Required attributes
-attribute :zone, :kind_of => String, :name_attribute => true
+attribute :zone, kind_of: String, name_attribute: true
 
 # Optional attributes
-attribute :target, :kind_of => String, :equal_to => ["default", "ACCEPT", "DROP", "%%REJECT%%"], :default => "default"
-attribute :default, :kind_of => [TrueClass, NilClass], :default => nil
+attribute :target, kind_of: String, equal_to: ['default', 'ACCEPT', 'DROP', '%%REJECT%%'], default: 'default'
+attribute :default, kind_of: [TrueClass, NilClass], default: nil

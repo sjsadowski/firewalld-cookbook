@@ -16,7 +16,6 @@ describe 'firewalld::default' do
   it 'starts firewalld' do
     expect(chef_run).to start_service('firewalld')
   end
-
 end
 
 describe 'fixture::port' do
@@ -24,16 +23,15 @@ describe 'fixture::port' do
     ChefSpec::SoloRunner.new.converge(described_recipe)
   end
 
-  it "installs firewalld" do
-    expect(chef_run).to install_package("firewalld")
+  it 'installs firewalld' do
+    expect(chef_run).to install_package('firewalld')
   end
 
-  it "adds port 993/tcp" do
-    expect(chef_run).to add_firewalld_port("993/tcp")
+  it 'adds port 993/tcp' do
+    expect(chef_run).to add_firewalld_port('993/tcp')
   end
 
-  it "removes port 1001/tcp" do
-    expect(chef_run).to remove_firewalld_port("1001/tcp")
+  it 'removes port 1001/tcp' do
+    expect(chef_run).to remove_firewalld_port('1001/tcp')
   end
-
 end

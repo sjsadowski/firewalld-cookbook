@@ -1,10 +1,8 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: interface
 #
 # Copyright:: 2015, Johnathan Kuperer
-
-use_inline_resources
 
 action :add do
   e = execute "add interface #{new_resource.interface} to zone" do

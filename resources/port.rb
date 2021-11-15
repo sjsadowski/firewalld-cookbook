@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: port
 #
 # Copyright:: 2015, Jeff Hutchison
@@ -11,7 +11,7 @@ actions :add, :remove
 default_action :add
 
 # Required attributes
-attribute :port, :kind_of => String, :name_attribute => true
+attribute :port, kind_of: String, name_attribute: true
 
 # Optional attributes
-attribute :zone, :kind_of => String
+attribute :zone, kind_of: String

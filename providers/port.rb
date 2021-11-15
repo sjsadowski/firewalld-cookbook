@@ -1,10 +1,8 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: port
 #
 # Copyright:: 2015, Jeff Hutchison
-
-use_inline_resources
 
 action :add do
   e = execute "add port #{new_resource.port} to zone" do

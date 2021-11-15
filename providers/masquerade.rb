@@ -1,10 +1,8 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: masquerade
 #
 # Author:: Dru Goradia
-
-use_inline_resources
 
 action :add do
   e = execute "add masquerade to #{new_resource.zone} zone" do
