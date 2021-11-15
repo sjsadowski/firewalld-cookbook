@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: rich_rule
 #
 # Copyright:: 2015, Jeff Hutchison

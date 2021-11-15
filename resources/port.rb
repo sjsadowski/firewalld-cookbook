@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: port
 #
 # Copyright:: 2015, Jeff Hutchison

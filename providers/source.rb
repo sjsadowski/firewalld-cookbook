@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: source
 #
 # Copyright:: 2015, Johnathan Kuperer

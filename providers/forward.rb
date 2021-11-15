@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: firewalld
+# Cookbook:: firewalld
 # Provider:: forward
 #
 # Copyright:: 2017, Alfred Moreno
