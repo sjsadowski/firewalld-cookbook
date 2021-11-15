@@ -4,8 +4,6 @@
 #
 # Copyright:: 2015, Jeff Hutchison
 
-use_inline_resources
-
 action :add do
   e = execute "add port #{new_resource.port} to zone" do
     not_if "firewall-cmd --permanent #{zone} --query-port=#{new_resource.port}"

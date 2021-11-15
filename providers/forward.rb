@@ -4,8 +4,6 @@
 #
 # Copyright:: 2017, Alfred Moreno
 
-use_inline_resources
-
 action :add do
     e = execute "add forward port #{new_resource.port}:#{new_resource.protocol} => #{new_resource.to_port} #{new_resource.address}" do
         not_if "firewall-cmd --query-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}"

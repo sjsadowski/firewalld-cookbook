@@ -4,8 +4,6 @@
 #
 # Author:: Dru Goradia
 
-use_inline_resources
-
 action :add do
   e = execute "add masquerade to #{new_resource.zone} zone" do
     not_if "firewall-cmd --permanent --zone=#{new_resource.zone} --query-masquerade"

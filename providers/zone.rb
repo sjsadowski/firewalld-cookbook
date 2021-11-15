@@ -4,8 +4,6 @@
 #
 # Copyright:: 2015, Johnathan Kuperer
 
-use_inline_resources
-
 action :create_if_missing do
 
   # Check if zone exists by attempting to call --get-target
