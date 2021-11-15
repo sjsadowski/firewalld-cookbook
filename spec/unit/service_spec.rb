@@ -12,5 +12,4 @@ describe 'fixture::service' do
   it 'removes service telnet' do
     expect(chef_run).to remove_firewalld_service('telnet')
   end
-
 end

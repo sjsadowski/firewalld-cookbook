@@ -17,5 +17,4 @@ describe 'fixture::masquerade' do
   it 'removes masquerade from public zone' do
     expect(chef_run).to remove_firewalld_masquerade('public')
   end
-
 end

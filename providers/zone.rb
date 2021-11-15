@@ -5,7 +5,6 @@
 # Copyright:: 2015, Johnathan Kuperer
 
 action :create_if_missing do
-
   # Check if zone exists by attempting to call --get-target
   zone_exists = system(
     'firewall-cmd','--permanent',"--zone=#{new_resource.zone}",'--get-target',
@@ -14,10 +13,10 @@ action :create_if_missing do
 
   if zone_exists
     Chef::Log.debug("firewalld zone #{new_resource.zone} exists, taking no action.")
-    new_resource.updated_by_last_action( false )
+    new_resource.updated_by_last_action(false)
   else
     action_create
-    new_resource.updated_by_last_action( true )
+    new_resource.updated_by_last_action(true)
   end
 end
 
@@ -53,7 +52,7 @@ action :create do
     updated ||= e_default.updated_by_last_action?
   end
 
-  new_resource.updated_by_last_action( updated )
+  new_resource.updated_by_last_action(updated)
 end
 
 action :delete do

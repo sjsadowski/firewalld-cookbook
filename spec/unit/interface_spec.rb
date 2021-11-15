@@ -17,5 +17,4 @@ describe 'fixture::interface' do
   it 'removes interface eth1' do
     expect(chef_run).to remove_firewalld_interface('eth1')
   end
-
 end

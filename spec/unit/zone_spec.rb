@@ -17,5 +17,4 @@ describe 'fixture::zone' do
   it 'deletes zone zone2' do
     expect(chef_run).to delete_firewalld_zone('zone2')
   end
-
 end

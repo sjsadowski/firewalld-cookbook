@@ -17,5 +17,4 @@ describe 'fixture::source' do
   it 'removes source 192.168.1.0/24' do
     expect(chef_run).to remove_firewalld_source('192.168.1.0/24')
   end
-
 end

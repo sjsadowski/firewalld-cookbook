@@ -17,5 +17,4 @@ describe 'fixture::rich_rule' do
   it 'removes rule for ssh' do
     expect(chef_run).to remove_firewalld_rich_rule('ssh remove')
   end
-
 end
