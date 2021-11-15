@@ -31,7 +31,7 @@ def zone
 end
 
 def rich_rule
-    cmd = 'rule '
+  cmd = 'rule '
     cmd += "family='#{new_resource.family}' " if new_resource.family
     cmd += "source address='#{new_resource.source_address}' " if new_resource.source_address
     cmd += "destination address='#{new_resource.destination_address}' " if new_resource.destination_address
