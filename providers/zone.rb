@@ -66,5 +66,5 @@ action :delete do
 end
 
 def target
-  new_resource.target ? new_resource.target : 'default'
+  new_resource.target || 'default'
 end
