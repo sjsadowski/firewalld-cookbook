@@ -7,19 +7,19 @@
 action :add do
   e = execute "add forward port #{new_resource.port}:#{new_resource.protocol} => #{new_resource.to_port} #{new_resource.address}" do
     not_if "firewall-cmd --query-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}"
-      command(firewall_command(:add))
+    command(firewall_command(:add))
   end
 
-    new_resource.updated_by_last_action(e.updated_by_last_action?)
+  new_resource.updated_by_last_action(e.updated_by_last_action?)
 end
 
 action :remove do
   e = execute "remove forward port #{new_resource.port}:#{new_resource.protocol} => #{new_resource.to_port} #{new_resource.address}" do
     only_if "firewall-cmd --query-forward-port=port=#{new_resource.port}:proto=#{new_resource.protocol}:toport=#{new_resource.to_port}#{address}"
-      command(firewall_command(:remove))
+    command(firewall_command(:remove))
   end
 
-    new_resource.updated_by_last_action(e.updated_by_last_action?)
+  new_resource.updated_by_last_action(e.updated_by_last_action?)
 end
 
 def firewall_command(operation)

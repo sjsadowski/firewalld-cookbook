@@ -7,8 +7,8 @@
 action :create_if_missing do
   # Check if zone exists by attempting to call --get-target
   zone_exists = system(
-    'firewall-cmd','--permanent',"--zone=#{new_resource.zone}",'--get-target',
-    out: ['/dev/null','w'], err: ['/dev/null','w']
+    'firewall-cmd', '--permanent', "--zone=#{new_resource.zone}", '--get-target',
+    out: ['/dev/null', 'w'], err: ['/dev/null', 'w']
   )
 
   if zone_exists
@@ -33,7 +33,7 @@ action :create do
   updated ||= e_create.updated_by_last_action?
 
   e_target = execute "set target for #{new_resource.zone} to #{target}" do
-    #not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
+    # not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
     not_if { target == Mixlib::ShellOut.new('firewall-cmd --permanent --zone=#{new_resource.zone} --get-target') }
     command(<<-EOC)
       firewall-cmd --permanent --zone=#{new_resource.zone} --set-target=#{target}
