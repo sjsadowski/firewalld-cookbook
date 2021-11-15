@@ -12,12 +12,12 @@ default_action :add
 
 # Optional attributes
 attribute :service_name, :kind_of => [String, NilClass]
-attribute :family, :kind_of => String, :default => "ipv4"
+attribute :family, :kind_of => String, :default => 'ipv4'
 attribute :zone, :kind_of => String
 attribute :source_address, :kind_of => [String, NilClass]
 attribute :destination_address, :kind_of => [String, NilClass]
 attribute :port_number, :kind_of => [Integer, NilClass]
-attribute :port_protocol, :kind_of => [String, NilClass], :default => "tcp"
+attribute :port_protocol, :kind_of => [String, NilClass], :default => 'tcp'
 attribute :log_prefix, :kind_of => [String, NilClass]
 attribute :log_level, :kind_of => [String, NilClass]
 attribute :limit_value, :kind_of => [String, NilClass]

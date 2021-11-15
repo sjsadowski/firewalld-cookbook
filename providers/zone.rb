@@ -8,8 +8,8 @@ action :create_if_missing do
 
   # Check if zone exists by attempting to call --get-target
   zone_exists = system(
-    'firewall-cmd','--permanent',"--zone=#{new_resource.zone}","--get-target",
-    :out=>["/dev/null","w"], :err=>["/dev/null","w"]
+    'firewall-cmd','--permanent',"--zone=#{new_resource.zone}",'--get-target',
+    :out=>['/dev/null','w'], :err=>['/dev/null','w']
   )
 
   if zone_exists

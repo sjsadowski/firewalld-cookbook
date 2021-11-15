@@ -1,5 +1,5 @@
 
-firewalld_service "http"
+firewalld_service 'http'
 
 %w{telnet}.each do |p|
   execute "add service #{p} to runtime config" do
@@ -10,6 +10,6 @@ firewalld_service "http"
   end
 end
 
-firewalld_service "telnet" do
+firewalld_service 'telnet' do
   action :remove
 end

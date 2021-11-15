@@ -3,7 +3,7 @@ service 'firewalld' do
   action [:enable, :start]
 end
 
-firewalld_source "192.168.0.0/24"
+firewalld_source '192.168.0.0/24'
 
 %w{192.168.1.0/24 192.168.2.0/24}.each do |ip|
   execute "change source #{ip} to runtime config" do
@@ -14,6 +14,6 @@ firewalld_source "192.168.0.0/24"
   end
 end
 
-firewalld_source "192.168.1.0/24" do
+firewalld_source '192.168.1.0/24' do
   action :remove
 end

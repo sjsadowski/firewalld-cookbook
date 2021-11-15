@@ -14,5 +14,5 @@ default_action :create
 attribute :zone, :kind_of => String, :name_attribute => true
 
 # Optional attributes
-attribute :target, :kind_of => String, :equal_to => ["default", "ACCEPT", "DROP", "%%REJECT%%"], :default => "default"
+attribute :target, :kind_of => String, :equal_to => ['default', 'ACCEPT', 'DROP', '%%REJECT%%'], :default => 'default'
 attribute :default, :kind_of => [TrueClass, NilClass], :default => nil

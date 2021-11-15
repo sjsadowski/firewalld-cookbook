@@ -4,7 +4,7 @@ service 'firewalld' do
   action [:enable, :start]
 end
 
-firewalld_rich_rule "ssh add" do
+firewalld_rich_rule 'ssh add' do
   zone 'public'
   family 'ipv4'
   source_address '192.168.100.0/24'
@@ -30,7 +30,7 @@ rules.each do |r|
   end
 end
 
-firewalld_rich_rule "ssh remove" do
+firewalld_rich_rule 'ssh remove' do
   zone 'public'
   family 'ipv4'
   service_name 'ssh'

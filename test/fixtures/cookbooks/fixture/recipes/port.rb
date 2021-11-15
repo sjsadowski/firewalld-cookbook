@@ -4,7 +4,7 @@ service 'firewalld' do
   action [:enable, :start]
 end
 
-firewalld_port "993/tcp"
+firewalld_port '993/tcp'
 
 %w{1001/tcp 1002/tcp}.each do |p|
   execute "add port #{p} to runtime config" do
@@ -15,6 +15,6 @@ firewalld_port "993/tcp"
   end
 end
 
-firewalld_port "1001/tcp" do
+firewalld_port '1001/tcp' do
   action :remove
 end
