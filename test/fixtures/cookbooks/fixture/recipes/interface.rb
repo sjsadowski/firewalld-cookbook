@@ -4,7 +4,7 @@ end
 
 firewalld_interface 'eth0'
 
-%w{eth1 eth2}.each do |eth|
+%w(eth1 eth2).each do |eth|
   execute "change interface #{eth} to runtime config" do
     command "firewall-cmd --change-interface=#{eth}"
   end

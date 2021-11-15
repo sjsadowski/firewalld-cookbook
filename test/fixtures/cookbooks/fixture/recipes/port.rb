@@ -6,7 +6,7 @@ end
 
 firewalld_port '993/tcp'
 
-%w{1001/tcp 1002/tcp}.each do |p|
+%w(1001/tcp 1002/tcp).each do |p|
   execute "add port #{p} to runtime config" do
     command "firewall-cmd --add-port=#{p}"
   end

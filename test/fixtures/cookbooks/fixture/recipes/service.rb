@@ -1,7 +1,7 @@
 
 firewalld_service 'http'
 
-%w{telnet}.each do |p|
+%w(telnet).each do |p|
   execute "add service #{p} to runtime config" do
     command "firewall-cmd --add-service=#{p}"
   end

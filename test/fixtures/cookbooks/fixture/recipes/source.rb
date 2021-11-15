@@ -5,7 +5,7 @@ end
 
 firewalld_source '192.168.0.0/24'
 
-%w{192.168.1.0/24 192.168.2.0/24}.each do |ip|
+%w(192.168.1.0/24 192.168.2.0/24).each do |ip|
   execute "change source #{ip} to runtime config" do
     command "firewall-cmd --change-interface=#{ip}"
   end
