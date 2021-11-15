@@ -11,7 +11,7 @@ actions :add, :change, :remove
 default_action :change
 
 # Required attributes
-attribute :interface, :kind_of => String, :name_attribute => true
+attribute :interface, kind_of: String, name_attribute: true
 
 # Optional attributes
-attribute :zone, :kind_of => String
+attribute :zone, kind_of: String
