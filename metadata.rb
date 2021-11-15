@@ -10,6 +10,6 @@ version          '1.2.2'
 
 supports         'fedora', '>= 15.0'
 supports         'centos', '>= 7.0'
-supports         'rhel',   '>= 7.0'
+supports         'redhat', '>= 7.0'
 supports         'ubuntu', '>= 14.04'
 supports         'debian', '>= 8.0'
