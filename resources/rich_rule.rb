@@ -10,9 +10,6 @@ actions :add, :remove
 # Make add the default action
 default_action :add
 
-# Required attributes
-attribute :name, :kind_of => String, :name_attribute => true
-
 # Optional attributes
 attribute :service_name, :kind_of => [String, NilClass]
 attribute :family, :kind_of => String, :default => "ipv4"
