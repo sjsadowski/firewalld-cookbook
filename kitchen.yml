@@ -15,10 +15,10 @@ platforms:
 suites:
   - name: default
     run_list:
-      - "recipe[fixture::port]"
-      - "recipe[fixture::service]"
-      - "recipe[fixture::masquerade]"
+      - recipe[fixture::port]
+      - recipe[fixture::service]
+      - recipe[fixture::masquerade]
 
   - name: rich_rule
     run_list:
-      - "recipe[fixture::rich_rule]"
+      - recipe[fixture::rich_rule]
