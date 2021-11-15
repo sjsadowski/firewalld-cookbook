@@ -6,7 +6,6 @@ issues_url       'https://github.com/sjsadowski/firewalld-cookbook/issues'
 chef_version     '>= 13.0'
 license          'Apache v2.0'
 description      'Installs/Configures firewalld'
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.2.2'
 
 supports         'fedora', ">= 15.0"
