@@ -34,7 +34,7 @@ action :create do
 
   e_target = execute "set target for #{new_resource.zone} to #{target}" do
     # not_if "[ `firewall-cmd --permanent --zone=#{new_resource.zone} --get-target` = #{target} ]"
-    not_if { target == Mixlib::ShellOut.new('firewall-cmd --permanent --zone=#{new_resource.zone} --get-target') }
+    not_if { target == Mixlib::ShellOut.new("firewall-cmd --permanent --zone=#{new_resource.zone} --get-target") }
     command(<<-EOC)
       firewall-cmd --permanent --zone=#{new_resource.zone} --set-target=#{target}
       firewall-cmd --reload
